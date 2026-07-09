@@ -13,9 +13,7 @@ tags:
 
 ## TL;DR
 
-::::important[TL;DR]
 Reading the patch, we can see that the author comments out a **Deoptimize** instruction. That creates a **type confusion** bug. From there, I trace how **Turbofan** handles the code in assembly, reproduce the behavior in the `d8` REPL, build `addrOf` / `fakeObj` primitives, and finish by popping a shell through a **WebAssembly RWX page**.
-::::
 
 
 ## Introduction

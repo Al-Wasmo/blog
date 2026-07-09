@@ -19,7 +19,7 @@ const latestPosts = posts.slice(0, 3)
     <section>
       <section-header>
         <h2>Latest posts</h2>
-        <a href={withBase("/blog")}>View all</a>
+        <a href={withBase("/posts")}>View all</a>
       </section-header>
       <ul>
         {latestPosts.map((post) => <BlogCard post={post} />)}

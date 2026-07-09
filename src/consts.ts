@@ -12,7 +12,7 @@ export const SITE = {
 
 export const NAVIGATION = [
   { href: "/", label: "Home" },
-  { href: "/blog", label: "Blog" },
+  { href: "/posts", label: "Blog" },
   { href: "/projects", label: "Projects" },
 ]
 

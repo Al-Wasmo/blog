@@ -7,7 +7,7 @@ type Props = { post: CollectionEntry<"blog"> }
 
 const { post } = Astro.props
 const authors = await getEntries(post.data.authors)
-const postHref = withBase(`/blog/${post.id}`)
+const postHref = withBase(`/${post.id}`)
 ---
 
 <li>

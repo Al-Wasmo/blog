@@ -50,9 +50,9 @@ const sections = rendered.map(({ entry, headings }, i) => ({
 const hasToc =
   sections.length > 1 || sections.some(({ headings }) => headings.length > 0)
 
-const crumbs = [{ label: parent.data.title, href: `/blog/${parent.id}` }]
+const crumbs = [{ label: parent.data.title, href: `/${parent.id}` }]
 if (isSubpost(post.id)) {
-  crumbs.push({ label: post.data.title, href: `/blog/${post.id}` })
+  crumbs.push({ label: post.data.title, href: `/${post.id}` })
 }
 ---
 
@@ -60,7 +60,7 @@ if (isSubpost(post.id)) {
   <MetaPost
     slot="head"
     post={post}
-    canonical={isSubpost(post.id) ? `/blog/${parent.id}` : undefined}
+    canonical={isSubpost(post.id) ? `/${parent.id}` : undefined}
   />
   {hasToc && (
       <TableOfContents
@@ -74,7 +74,7 @@ if (isSubpost(post.id)) {
   {rendered.map(({ entry, Content, authors }, i) => (
       <article
         id={i === 0 ? undefined : subpostSlug(entry.id)}
-        data-url={withBase(`/blog/${entry.id}`)}
+        data-url={withBase(`/${entry.id}`)}
         data-title={pageTitle(entry.data.title)}
         data-embedded={i > 0 || undefined}
       >
