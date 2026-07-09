@@ -2,6 +2,9 @@
 import sansWoff2 from "@/assets/fonts/IBMPlexSans-VariableFont_wdth,wght.woff2?url"
 import sansItalicWoff2 from "@/assets/fonts/IBMPlexSans-Italic-VariableFont_wdth,wght.woff2?url"
 import { SITE } from "@/consts"
+import { withBase } from "@/lib/utils"
+
+const site = Astro.site ?? new URL(Astro.url.origin)
 ---
 
 <head>
@@ -33,18 +36,27 @@ import { SITE } from "@/consts"
     media="(prefers-color-scheme: light)"
   >
 
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link
+    rel="icon"
+    type="image/png"
+    href={withBase("/favicon-96x96.png")}
+    sizes="96x96"
+  >
+  <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")}>
+  <link rel="shortcut icon" href={withBase("/favicon.ico")}>
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href={withBase("/apple-touch-icon.png")}
+  >
+  <link rel="manifest" href={withBase("/site.webmanifest")}>
 
-  <link rel="sitemap" href="/sitemap-index.xml">
+  <link rel="sitemap" href={withBase("/sitemap-index.xml")}>
   <link
     rel="alternate"
     type="application/rss+xml"
     title={SITE.title}
-    href={new URL("rss.xml", Astro.site)}
+    href={new URL(withBase("/rss.xml"), site)}
   >
 
   <link rel="preload" href={sansWoff2} as="font" type="font/woff2" crossorigin>

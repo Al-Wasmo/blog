@@ -2,7 +2,7 @@
 import Logo from "@/assets/logo.svg"
 import ThemeToggle from "@/components/ThemeToggle.astro"
 import { NAVIGATION, SITE } from "@/consts"
-import { normalizePath } from "@/lib/utils"
+import { normalizePath, withBase } from "@/lib/utils"
 
 type Props = { crumbs?: { label: string; href: string }[] }
 
@@ -20,7 +20,7 @@ const currentLabel =
 ---
 
 <aside data-bar>
-  <a href="/" aria-label={SITE.title} data-brand>
+  <a href={withBase("/")} aria-label={SITE.title} data-brand>
     <Logo />
     <span>{SITE.title}</span>
   </a>
@@ -29,7 +29,7 @@ const currentLabel =
       {NAVIGATION.map((item) => (
           <li>
             <a
-              href={item.href}
+              href={withBase(item.href)}
               data-current={isSection(item.href) || undefined}
               aria-current={pathname === item.href ? "page" : undefined}
             >

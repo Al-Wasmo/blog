@@ -1,5 +1,6 @@
 ---
 import type { SvgComponent } from "astro/types"
+import { withBase } from "@/lib/utils"
 
 type Props = { links: { href: string; label: string; icon: SvgComponent }[] }
 
@@ -12,7 +13,7 @@ const isExternalLink = (href: string) =>
   {links.map(({ href, label, icon: Icon }) => (
       <li>
         <a
-          href={href}
+          href={isExternalLink(href) ? href : withBase(href)}
           data-icon-button
           target={isExternalLink(href) ? "_blank" : undefined}
           rel={isExternalLink(href) ? "noopener noreferrer" : undefined}

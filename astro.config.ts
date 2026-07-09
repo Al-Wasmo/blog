@@ -12,7 +12,7 @@ import { headingNamespace } from "./src/lib/heading-namespace"
 import { headingAnchors } from "./src/lib/heading-anchors"
 
 export default defineConfig({
-  site: "https://al-wasmo.github.io",
+  site: "https://al-wasmo.github.io/blog/",
   base: "/blog",
   compressHTML: true,
   prefetch: { prefetchAll: true },

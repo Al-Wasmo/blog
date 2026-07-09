@@ -5,7 +5,7 @@ import Globe from "@/assets/icons/globe.svg"
 import Link from "@/assets/icons/link.svg"
 import Twitter from "@/assets/icons/twitter.svg"
 import SocialIcons from "@/components/SocialIcons.astro"
-import { normalizePath } from "@/lib/utils"
+import { normalizePath, withBase } from "@/lib/utils"
 import type { SvgComponent } from "astro/types"
 import type { CollectionEntry } from "astro:content"
 
@@ -28,16 +28,17 @@ const links = [
   ...(mail ? [{ href: `mailto:${mail}`, label: "Email", icon: Email }] : []),
 ]
 
-const href = `/authors/${author.id}`
-const isCurrent = normalizePath(Astro.url.pathname) === href
+const rawHref = `/authors/${author.id}`
+const href = withBase(rawHref)
+const isCurrent = normalizePath(Astro.url.pathname) === rawHref
 ---
 
 <li>
   {isCurrent ? (
-      <img src={avatar} alt={name} width="64" height="64" />
+      <img src={withBase(avatar)} alt={name} width="64" height="64" />
     ) : (
       <a href={href} tabindex="-1" aria-hidden="true">
-        <img src={avatar} alt="" width="64" height="64" />
+        <img src={withBase(avatar)} alt="" width="64" height="64" />
       </a>
     )}
   <author-info>
