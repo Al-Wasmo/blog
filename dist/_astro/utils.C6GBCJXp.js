@@ -1,1 +1,0 @@
-var e=e=>{try{return decodeURIComponent(e).replace(/\/+$/,``)}catch{return e.replace(/\/+$/,``)}},t=e=>decodeURIComponent(e.slice(1));export{e as n,t};
