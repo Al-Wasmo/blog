@@ -1,0 +1,84 @@
+---
+import MoonIcon from "@/assets/icons/moon.svg"
+import SunIcon from "@/assets/icons/sun.svg"
+---
+
+<button
+  id="theme-toggle"
+  data-icon-button
+  aria-label="Toggle light and dark mode"
+  title="Toggle light and dark mode"
+>
+  <light-icon><SunIcon /></light-icon>
+  <dark-icon><MoonIcon /></dark-icon>
+</button>
+
+<style is:global>
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  dark-icon {
+    display: none;
+  }
+
+  :root[data-theme="dark"] {
+    light-icon {
+      display: none;
+    }
+
+    dark-icon {
+      display: inline;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      light-icon {
+        display: none;
+      }
+
+      dark-icon {
+        display: inline;
+      }
+    }
+  }
+</style>
+
+<script>
+  const currentTheme = () => {
+    const root = document.documentElement
+    return root.dataset.theme === "dark" ||
+      (!root.dataset.theme &&
+        matchMedia("(prefers-color-scheme: dark)").matches)
+      ? "dark"
+      : "light"
+  }
+
+  const button = document.getElementById("theme-toggle")
+  const syncButton = () => {
+    button?.setAttribute("aria-pressed", String(currentTheme() === "dark"))
+  }
+
+  const toggleTheme = () => {
+    const root = document.documentElement
+    const theme = currentTheme() === "dark" ? "light" : "dark"
+    root.dataset.theme = theme
+    localStorage.theme = theme
+    syncButton()
+  }
+
+  if (button) {
+    button.onclick = toggleTheme
+    syncButton()
+  }
+
+  matchMedia("(prefers-color-scheme: dark)").addEventListener(
+    "change",
+    syncButton,
+  )
+</script>

@@ -1,0 +1,165 @@
+---
+import Logo from "@/assets/logo.svg"
+import ThemeToggle from "@/components/ThemeToggle.astro"
+import { NAVIGATION, SITE } from "@/consts"
+import { normalizePath } from "@/lib/utils"
+
+type Props = { crumbs?: { label: string; href: string }[] }
+
+const { crumbs = [] } = Astro.props
+const pathname = normalizePath(Astro.url.pathname) || "/"
+const isSection = (href: string) =>
+  href === "/"
+    ? pathname === href
+    : pathname === href || pathname.startsWith(`${href}/`)
+const section = NAVIGATION.find(({ href }) => isSection(href))
+const currentLabel =
+  crumbs.at(-1)?.label && pathname !== section?.href
+    ? crumbs.at(-1)?.label
+    : undefined
+---
+
+<aside data-bar>
+  <a href="/" aria-label={SITE.title} data-brand>
+    <Logo />
+    <span>{SITE.title}</span>
+  </a>
+  <nav aria-label="Primary navigation">
+    <ul>
+      {NAVIGATION.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              data-current={isSection(item.href) || undefined}
+              aria-current={pathname === item.href ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+    </ul>
+  </nav>
+  <div data-meta>
+    {currentLabel && (
+      <span data-context title={currentLabel}>
+        {currentLabel}
+      </span>
+    )}
+    <ThemeToggle />
+    <slot name="actions" />
+  </div>
+</aside>
+
+<style>
+  aside {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-s);
+    min-block-size: var(--bar-nav-height);
+    padding-block: var(--space-xs);
+    padding-inline: var(--grid-gutter);
+    background-color: color-mix(in oklab, var(--background) 88%, transparent);
+    backdrop-filter: blur(var(--blur-sm));
+    border-block-end: 1.5px solid var(--border);
+  }
+
+  [data-brand] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: fit-content;
+    min-width: 0;
+    color: var(--foreground);
+    font-size: var(--step-0);
+    font-weight: var(--font-weight-medium);
+    text-decoration-line: none;
+    white-space: nowrap;
+
+    svg {
+      inline-size: 1.125rem;
+      block-size: 1.125rem;
+      flex-shrink: 0;
+    }
+  }
+
+  nav {
+    min-width: 0;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+  }
+
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    text-decoration-line: none;
+
+    &:hover,
+    &[data-current],
+    &[aria-current="page"] {
+      color: var(--foreground);
+      background-color: color-mix(in oklab, var(--muted) 72%, transparent);
+    }
+  }
+
+  [data-meta] {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.125rem;
+    min-width: 0;
+  }
+
+  [data-context] {
+    max-inline-size: min(24vw, 22ch);
+    overflow: hidden;
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (width < 64rem) {
+    aside {
+      grid-template-columns: auto 1fr auto;
+      row-gap: var(--space-2xs);
+      padding-inline: var(--bar-gutter);
+    }
+
+    nav {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+
+    nav ul {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-block-end: 0.125rem;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    [data-context] {
+      display: none;
+    }
+  }
+
+  @media (width < 28rem) {
+    [data-brand] span {
+      display: none;
+    }
+  }
+</style>
