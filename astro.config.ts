@@ -13,6 +13,7 @@ import { headingAnchors } from "./src/lib/heading-anchors"
 
 export default defineConfig({
   site: "https://al-wasmo.github.io",
+  base: "/blog",
   compressHTML: true,
   prefetch: { prefetchAll: true },
   integrations: [
