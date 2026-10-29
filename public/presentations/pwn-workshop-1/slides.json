@@ -1,0 +1,247 @@
+[
+  {
+    "image": "slide-01.webp",
+    "text": "SHELLMATES\n    CLUB\n\n\n\n\nBINARY EXPLOITATION &\nREVERSE ENGINEERING\nBASICS\n\n\n/*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Hello, and welcome to our workshop, **Binary Exploitation and Reverse Engineering Basics**, sponsored by Shellmates Club.\n\nToday, we’ll talk about these two areas, explain the basics, show some real-world use cases, and walk through an example.\n\nFirst, I want to thank Shellmates Club for organizing the event and preparing the environment for us.\n\n[Add any other acknowledgements here.]"
+  },
+  {
+    "image": "slide-02.webp",
+    "text": "Reverse Engineering                                                             SHELLMATES\n                                                                                CLUB\n\n\n\n\n1   Reverse Engineering        2    Getting Started                  3   Targets & Binary\n    Basics                                                               Formats\n\n\n\n\n4   Assembly Language          5    Static & Dynamic                 6   Examples & Q&A\n                                    Analysis\n\n\n\n\n                          /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Let’s start with the table of contents.\n\nWe’ll define reverse engineering, understand why it matters, and look at some real-world examples. Then we’ll cover the fundamentals and basics by walking through a simple program in reverse: starting with a program we know nothing about, breaking it down, and working toward understanding it completely."
+  },
+  {
+    "image": "slide-03.webp",
+    "text": "WHAT IS REVERSE ENGINEERING?\n Reverse engineering is the process of examining an application to\nunderstand how it works without access to its original source code or\n                              design.",
+    "script": "What is reverse engineering?\n\nFrom the image and definition, we can see that reverse engineering is the process of examining a binary, software program, game, or mobile app with the right tools to understand how it works, even when we don’t have access to its original source code.\n\nMost of the time, reverse engineering starts with a question.\n\nFor example, people who use an Algerian restaurant reservation system might ask, “How can I automate a reservation?” A reverse engineer can inspect the app, understand how the reservation happens, and work out how to automate it without using the app manually."
+  },
+  {
+    "image": "slide-04.webp",
+    "text": "WHAT IS REVERSE ENGINEERING?\n                         Or we can define it by,\nwe can define it as starting with a question about something we know\n  absolutely nothing about, and working backward through reverse\n                    engineering to find the answer.\n\n\n\n          Question                                 Answer\n\n         what does my                             Spying on me\n            tv do?                                     xD",
+    "script": "Another definition is to start with a question about something we don’t understand and reverse engineer it for the purpose of answering that question.\n\nFor example, a YouTuber asked: “This TV is so powerful and technologically advanced. It has a camera, a microphone, and an AI assistant. Why is it so cheap? What is it doing that I don’t know about?”\n\nThe video’s conclusion was that the TV was collecting information and sending it to LG’s servers. The point is to investigate the question and see what the evidence shows."
+  },
+  {
+    "image": "slide-05.webp",
+    "text": "EXAMPLES                                                    SHELLMATES\n                                                            CLUB\n\nREAL-WORLD VULNERABILITY DEMONSTRATIONS\n\n\n\n\n                 /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "[Introduce the LG incident shown on the slide.]"
+  },
+  {
+    "image": "slide-06.webp",
+    "text": "SHELLMATES\n   CLUB\n\n\nWhy It Matters\nWhy It Matters\nFixing Bugs\nDeep understanding of CS principles and low-level systems\nEquips both attackers and defenders with crucial technical\nskills.\nBuilds a strong mental model and encourages flexible\nthinking.\n\n\n                   /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Why does reverse engineering matter?\n\nUnderstanding how something works is powerful. It can help us automate tasks, find bugs and problems in software, and protect systems. It also helps us build a strong mental model for solving problems.\n\nAnd it’s quite fun, too."
+  },
+  {
+    "image": "slide-07.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nHOW TO GET STARTED\n      MOBILE\n                                                     APPLICATIONS\n\n HARDWARE        DEPENDS\n     GAME\n                                      MALWARE\n\n\n               /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "How do you get started? Honestly, it depends on what interests you.\n\nReverse engineering is a fast-moving field built around asking questions and finding answers. You can reverse engineer many kinds of things.\n\nFor example, mobile reverse engineering can help you find bugs, automate tasks, or understand how apps work. Game reverse engineering can be used to study games, make cheats, and more. Some people focus on malware reverse engineering: observing its behavior and answering questions about what it does and where it came from. You can also reverse engineer desktop applications."
+  },
+  {
+    "image": "slide-08.webp",
+    "text": "EXAMPLES                                  SHELLMATES\n                                          CLUB\n\nREAL-WORLD VULNERABILITY DEMONSTRATIONS",
+    "script": "Here we see a YouTuber whose work focuses on reverse engineering Apple apps and operating systems. They investigate how those products work and look for hidden features."
+  },
+  {
+    "image": "slide-09.webp",
+    "text": "EXAMPLES                                  SHELLMATES\n                                          CLUB\n\nREAL-WORLD VULNERABILITY DEMONSTRATIONS",
+    "script": "Here’s another YouTuber, Nathan Baggs, who focuses on reverse engineering games. The goal isn’t always to crack a game; sometimes it’s to fix bugs.\n\nFor example, some older games don’t work on newer versions of Windows. He found that the games expected certain files to exist, but that behavior had changed in newer versions. He fixed the problem and found other examples, too."
+  },
+  {
+    "image": "slide-10.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nHOW TO GET STARTED\n      MOBILE\n                                                     APPLICATIONS\n\n HARDWARE        DEPENDS\n     GAME\n                                      MALWARE\n\n\n               /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "As you can see, there are many resources available in fun and accessible formats. You can choose a domain, search for blogs and articles, or look for YouTube videos. There’s a good chance you’ll find something that teaches you something new about reverse engineering."
+  },
+  {
+    "image": "slide-11.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nHOW TO GET STARTED\n\n\n              APPLICATIONS\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "In this workshop, we’ll learn the basics through practice. We’ll focus on reverse engineering a desktop app—a binary—and look at the steps involved.\n\nI could give the same binary to ten different people, and each person might use a different method to reach the same conclusion. The more you know, the more shortcuts you can take."
+  },
+  {
+    "image": "slide-12.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nFUNDAMENTALS & BASICS\n        Essential tools for debugging and analysis\n\n\n        Assembly language\n\n\n        Program Env\n\n\n\n\n                   /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "**Fundamentals and Basics**\n\nOver time, you’ll pick up these skills. The more you’re exposed to reverse engineering, the better you’ll become.\n\nYou’ll need to know which tools to use in each situation. For our program, we’ll need tools that can read a binary, extract information from it, and show us its code in a readable format.\n\nThe second fundamental is assembly language. We’ll need to understand assembly instructions because they represent the instructions the CPU runs. Programs compile to machine code, so understanding the basics of assembly gives us a starting point.\n\nThe last thing we’ll need to understand is the program environment. When you program in Python, you can import libraries that do work for you automatically. You don’t need to read every line of a library to use it.\n\nThe same idea applies to reverse engineering. You don’t need to focus on the whole binary. A lot of its contents may be libraries, files, images, or other material that isn’t relevant to your question. The program’s logic is in there too, and understanding the environment helps you avoid wasting time."
+  },
+  {
+    "image": "slide-13.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nTARGET\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Here’s our target: a program we don’t know anything about yet.\n\nOur job is to collect as much useful information about it as possible."
+  },
+  {
+    "image": "slide-14.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nTARGET\n\n                      TYPE:\n\n                      READABLE CONTENT (STRINGS):\n\n                      BEHAVIOR:\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "First, let’s ask what type of file it is. Then we’ll look for readable strings and observe its behavior.\n\n[Go to the computer and do the live demo.]"
+  },
+  {
+    "image": "slide-15.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nTARGET\n                      TYPE: ELF BINARY\n\n\n                      READABLE CONTENT (STRINGS):\n                         TWO STATES OF THE APP\n\n                      BEHAVIOR: UNDERSTOOD\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "[Fill in the information from the live demo: file type, readable content, and the app’s behavior.]"
+  },
+  {
+    "image": "slide-16.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n Assembly language\n\n\n\n\n                     READER\n\n\n\n\n                /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Now let’s use a more advanced tool to read the file’s contents. We’ll open it in ImHex, which can read the file and help us understand its format.\n\nWe can see that the file contains numbers, and some of those numbers represent code. That code is machine code, which we can examine as assembly language.\n\n[Show ImHex.]"
+  },
+  {
+    "image": "slide-17.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n Assembly language\n\n\n\n\n                     READER\n\n\n\n\n                /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "```bash\nobjdump -d -M intel --no-show-raw-insn --visualize-jumps=color --disassembler-color=extended ./vault\n```\n\nOpening the file as raw data won’t tell us everything we need, so we’ll use a tool for this kind of analysis: `objdump`. It disassembles the binary and shows the assembly in a more readable format.\n\nThere’s a lot of output. This is where our understanding of the program environment comes in. We can ignore standard placeholder code and focus on the main function. We can map out the logic and look at the comparison instruction.\n\n[Show the relevant part of the output and the answer.]"
+  },
+  {
+    "image": "slide-18.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n Assembly language\n\n\n\n\n               READER\n\n\n\n\n                /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "To focus on the tools even more, here’s another tool that can make this process much easier: Ghidra."
+  },
+  {
+    "image": "slide-19.webp",
+    "text": "SHELLMATES\n    CLUB\n\n\nSTATIC ANALYSIS\n Static analysis examines a program's code or binary without running it to\n understand how it works.\n\n\n\nDYNAMIC ANALYSIS\nDynamic analysis is examining a program while it's running to understand its behavior,\nmonitor its execution, and find potential bugs or vulnerabilities.\n\n\n\n\n                         /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "There’s another way to solve this challenge.\n\nWhat we’ve done so far—reading the code, using Ghidra, and understanding the assembly—is called static analysis. We examine the program without running it and use the code to work out what it does.\n\nThe second method is dynamic analysis."
+  },
+  {
+    "image": "slide-20.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nDYNAMIC ANALYSIS\n\n\n\n\n                           VS\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Let’s go back to the information we collected at the beginning. We know the app has two outputs, and we know our input gets processed somehow.\n\nIf we recognize functions commonly used in C, we might guess that the program prints with `printf` and reads with `scanf`, since those are standard functions in C programs on Linux.\n\nWe can guess that the program processes and compares our input at some point. If we stop the program, inspect memory, and watch the code run, we can learn more about what it does.\n\nNow our dynamic-analysis demo begins. We’ll use GDB.\n\n[Start the GDB demo.]"
+  },
+  {
+    "image": "slide-21.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n\n\n                  Q&A\n                   SUMMARY\n\n             /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "[Play the video example.]"
+  },
+  {
+    "image": "slide-22.webp",
+    "text": "EXAMPLES                                                    SHELLMATES\n                                                            CLUB\n\nREAL-WORLD VULNERABILITY DEMONSTRATIONS\n\n\n\n\n                 /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Here’s a summary of what we covered in reverse engineering.\n\n- Q&A."
+  },
+  {
+    "image": "slide-23.webp",
+    "text": "Pwn Basics                                                                      SHELLMATES\n                                                                                CLUB\n\n\n\n\n1   Binary Exploitation        2    Bug Classes &                    3   Buffer Overflows\n                                    Vulnerabilities\n\n\n\n\n             4   Integer                      5    Q&A, Resources &\n                 Vulnerabilities                   Careers\n\n\n\n\n                          /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Now that we’ve talked about reverse engineering, let’s move on to the second half of the workshop: binary exploitation.\n\nHere’s the table of contents."
+  },
+  {
+    "image": "slide-24.webp",
+    "text": "WHAT IS BINARY EXPLOITATION?\n   Binary exploitation is the process of finding bugs in binary\n  programs and turning them into exploits to manipulate their\n                             behavior.",
+    "script": "Reverse engineering and Pwn share many of the same features and targets, but they have different goals.\n\n**Binary exploitation is the process of finding bugs in binary programs and turning them into exploits to manipulate their behavior.**\n\nWe start with a program, find some kind of unintended behavior, and try to turn it into an exploit. The impact could include remote code execution, leaking user information, or gaining access to a system."
+  },
+  {
+    "image": "slide-25.webp",
+    "text": "WHAT IS A BUG?\nA bug is a mistake or flaw in a program that causes unexpected or\nincorrect behavior, something the programmer didn't intend or account\nfor.\n\n\nShopping App\nImagine you're buying a phone online. The app asks you\nto enter the quantity you want to buy.\nWhat if you enter -5 instead of 5?\nIf the programmer didn't account for negative numbers\nand the transaction still goes through, that's a bug.",
+    "script": "Since Pwn mostly focuses on finding bugs, let’s understand what a bug is."
+  },
+  {
+    "image": "slide-26.webp",
+    "text": "EXAMPLES                                                    SHELLMATES\n                                                            CLUB\n\nREAL-WORLD VULNERABILITY DEMONSTRATIONS\n\n\n\n\n                 /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "For example, people found a bug in a Node.js library that could allow skilled attackers to get remote code execution on affected servers and access them. Many of us use Node.js, or may use it in the future.\n\nThis is a real bug and an example from last week."
+  },
+  {
+    "image": "slide-27.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nFUNDAMENTALS & BASICS\n\n      Bug Classes\n\n      Reverse Engineering Basics\n\n     Essential tools for debugging and analysis\n\n\n\n\n                    /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "**Bug Classes**\n\nThe first foundation is reverse engineering: dynamic analysis helps us understand how programs work and how their behavior can be changed at runtime. Since the goal is to cause unintended behavior, we need to understand the program in detail.\n\nThe second foundation is tools. We need to know how to use tools to debug and investigate programs. We’ve already seen some of these tools in the reverse engineering section. Understanding tools, including AI tools, can make finding bugs easier."
+  },
+  {
+    "image": "slide-28.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nBUG CLASSES\nFORMAT STRING VULNERABILITIES\n                                               UNINITIALIZED MEMORY\n\n    TYPE CONFUSION\n                          BUFFER OVERFLOWS\n                                                            RACE CONDITIONS\n\n   MEMORY CORRUPTION\n                              INTEGER VULNERABILITIES\n\n\n                 /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "In binary exploitation, we don’t need to focus on the entire codebase. We can focus on common bug classes and reduce the search space.\n\nThere are many bug classes, and we don’t need to know them all at once. Which ones matter depends on the environment. For example, format-string bugs may be more common in IoT devices and older software.\n\nRace conditions are more relevant in multithreaded applications. In a single-threaded app, there may be less reason to search for that kind of bug. The same idea applies to other bug classes: learn what to look for and when it’s relevant."
+  },
+  {
+    "image": "slide-29.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nBUG CLASSES\n\n\n\n              BUFFER OVERFLOWS\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "For this workshop, we’ll focus on buffer overflows and see how to tackle a bug class by breaking it into steps."
+  },
+  {
+    "image": "slide-30.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nBUFFER OVERFLOWS\nHOW TO TACKLE A BUG CLASS\n  Understand Data Structures\n\n  Understand Affected Memory\n\n  Understand Use cases\n\n  Practice\n\n                  /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "To study a bug class, we first need to understand the primitive data types that cause it. In this case, the name gives us a clue.\n\nWe’ll learn what a buffer is, what it’s used for, and how we can use it. Then we’ll learn what an overflow is and which memory in the program can be affected. Since the program is in memory, understanding the affected areas can help us see what we might change to affect the program’s behavior.\n\nThen we’ll look at use cases and how researchers have used the bug. This can help us recognize where we might encounter it. For example, if a program doesn’t use buffers, there’s no point in looking for this kind of bug in it; we should consider something else.\n\nThe last step is practice. The more you read about bugs, solve them, and reproduce them, the better you’ll get."
+  },
+  {
+    "image": "slide-31.webp",
+    "text": "SHELLMATES\n CLUB\n\n\n Understand Data Structures\n\n\n\nWHAT’S A BUFFER?\nA buffer is simply a region of memory used by a\nprogram to temporarily store data. The data is\nstored in a contiguous manner, meaning the bytes\nare placed next to each other in memory.\n\n\n                  /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "What’s a buffer?"
+  },
+  {
+    "image": "slide-32.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n\n\n             /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "[Show the buffer graph.]"
+  },
+  {
+    "image": "slide-33.webp",
+    "text": "SHELLMATES\n      CLUB\n\n    Understand Data Structures\n\n\n\nWHAT’S A BUFFER OVERFLOW?\nA buffer overflow occurs when a program writes\nmore data to a buffer than it can hold.\n\nBecause buffers are stored alongside other\nimportant data in memory, exceeding the buffer’s\nlimits can overwrite nearby memory and cause\nproblems.\n                          /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "What’s a buffer overflow?"
+  },
+  {
+    "image": "slide-34.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nWHERE IS THE DATA STORED?\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Now let’s understand the memory layout of a program. After we understand what a buffer is and what an overflow means—writing past the limit—we need to know where we’re writing and what kind of memory we’re writing into. That helps us understand what we can change or overwrite.\n\nFor example, in a game, we might want to find a bug that changes the score. We need to find where the buffer is, where the score is, and whether the buffer can affect it. The same idea applies to other programs: understanding the memory layout helps us reason about how a bug could be used.\n\nThe lines in the memory map represent memory regions. We can read the start address, end address, permissions, and name of each region. At the top, we can see the program’s name, `XP1`.\n\nIn the reverse engineering section, we looked at a hex editor and saw that a binary contains libraries, empty space, and other data. At runtime, the program and its dependencies are mapped into memory. We can see regions for libraries such as libc and the dynamic loader (`ld.so`). The heap is used for dynamic memory allocation and can matter for other bug classes. In this example, we’ll focus mainly on the stack and the program’s memory."
+  },
+  {
+    "image": "slide-35.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nBUG\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Okay, now let’s work on the bug. We have this program in front of us. We’ll read it and understand what it does.\n\nIt has a `main` function and a `secret` variable set to 1234. It also has a character buffer with a size of eight, so the buffer can hold eight bytes.\n\nThe program prints the secret and asks us to enter text. It uses the `read` function to read input into the buffer. If you look closely, you can see the overflow: the buffer is eight bytes, but the program allows `read` to read up to 32 bytes. That’s the bug.\n\nIn the example shown, we entered four `A` characters. Nothing changed because four bytes fit within the eight-byte buffer. If all 32 requested bytes are read, that is 24 bytes beyond the buffer’s capacity.\n\nLet’s look at a visualization of the program’s memory and see what we can change. First, we’ll enter more than eight bytes and then examine what’s shown.\n\nAs you can see, writing more than the buffer can hold overwrites the `secret` variable in this example. Now let’s look at the illustration to understand the overflow and how we can use it."
+  },
+  {
+    "image": "slide-36.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nBUG\n\n\n     GDB               VS\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "[Show the graph and illustration.]"
+  },
+  {
+    "image": "slide-37.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nCHANGE THE APP’S LOGIC\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "I hope the general idea is clear. In the simple example, we overwrote a variable. It can be more complex.\n\nFor example, imagine an app with a secret variable that checks our password. If we enter the correct password, we get access to more functionality; otherwise, we don’t. If we don’t know the password, we can’t access it normally. A buffer overflow could let us overwrite the check so it works in our favor. This is one of many examples of how a buffer overflow could be used."
+  },
+  {
+    "image": "slide-38.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nCHANGE THE APP’S CONTROL\nFLOW\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "As we understand more about memory, the buffer, and the data around it, we can learn how to manipulate the program and exploit it.\n\nIn the next workshop, we’ll look at how to change an application’s control flow so it reaches a `win` function. We’ll also look at what we can do when there isn’t a useful function to jump to. Those are ideas we’ll explore in the practical workshop.\n\nThe last step in studying a bug class is practice. The more you practice, the better you’ll get.\n\n[Use GDB.]"
+  },
+  {
+    "image": "slide-39.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nBUG CLASSES\n\n\n          INTEGER VULNERABILITIES\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Let me quickly show you another bug class. We’ll speed-run it. This one is quite simple, but that doesn’t mean it never appears in real software: integer vulnerabilities.\n\n[Show the GitLab example.]"
+  },
+  {
+    "image": "slide-40.webp",
+    "text": "SHELLMATES\n     CLUB\n\n\nINTEGER VULNERABILITIES\n    Integer Types & Ranges\n\n INTEGERS\n\n    Arithmetic & Conversions\n\nCHECK THE TYPE, RANGE, AND HOW THE\n          RESULT IS USED.\n\n    How the Result Is Used\n\n MATH OPERATIONS\n\n                        /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "For integer vulnerabilities, check the type and range, arithmetic and conversions, and how the result is used. These details help us understand how an unexpected value can affect the program."
+  },
+  {
+    "image": "slide-41.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nWORKED EXAMPLE\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Now let’s work through the example and see how we can investigate a real-world bug.\n\nPHP2Shell."
+  },
+  {
+    "image": "slide-42.webp",
+    "text": "SHELLMATES\n CLUB\n\n\nIMPACT\n\n\n\n\n              /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Now let’s look at the impact of the integer vulnerability."
+  },
+  {
+    "image": "slide-43.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n\n\n             Q&A\n             SUMMARY\n\n             /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Q&A and a summary of the Pwn section."
+  },
+  {
+    "image": "slide-44.webp",
+    "text": "SHELLMATES\n   CLUB\n\n\nRESOURCES TO LEARN MORE\n\n\n            al-\nwasmo.github.io/blog/pwn-\n and-reverse-engineering-\n   workshop#resources",
+    "script": "Resources. The course resources are here: https://al-wasmo.github.io/blog/pwn-and-reverse-engineering-workshop#resources"
+  },
+  {
+    "image": "slide-45.webp",
+    "text": "SHELLMATES\n   CLUB\n\n\nBUILD YOUR ONLINE PRESENCE\n\nCreate a blog or portfolio.\n\nShare what you’re learning.\n\nDocument your journey.\n\nPublish your projects and research.\n\n                 /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "My advice is to build an online presence. Create a blog or portfolio, share what you’re learning, document your journey, and publish your projects and research.\n\nYour blog can become part of your CV. Research labs want to see examples of your work. The more you document, the easier it is for people to understand your skills, interests, and progress.\n\nSince you’re still learning, documenting that journey lets people see how you’re improving. Instead of only saying that you know reverse engineering or binary exploitation, you can point people to your work and let it speak for itself."
+  },
+  {
+    "image": "slide-46.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n\n\n             /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "[Visual transition: Shellmates Club.]"
+  },
+  {
+    "image": "slide-47.webp",
+    "text": "SHELLMATES\n   CLUB\n\n\nJOB MARKET\n1. Opportunities in Algeria vs. Worldwide\nLimited local opportunities and interest\nHigh global demand for specialized skills\nRemote work and international opportunities\n\n2. Bug Bounty\nGoogle VRP (Chrome, Android, etc.)\nFinding vulnerabilities in software and libraries\nGetting rewarded for security discoveries\n                   /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "In Algeria, opportunities to advance in this field may be limited because there is currently little interest in cybersecurity. Not many people are willing to spend time learning low-level security. With AI automating more tasks, I think even fewer people may take the time to learn these topics.\n\nBut that’s not necessarily a bad thing. These skills are in demand globally, so you aren’t limited to Algeria. You can work remotely, take part in bug bounty programs, or work in research and development.\n\n### Bug Bounty\n\nOne opportunity is bug bounty: finding security vulnerabilities and reporting them through a program.\n\nFor example, you can look for vulnerabilities in Google software, browsers, and other products through Google’s Vulnerability Reward Programs. Companies also run their own programs for their software and libraries.\n\nA vulnerability in a shared library could affect many products that use it. For example, if many games use the same Steam DLL, a vulnerability in that DLL could affect those games.\n\nYou don’t have to work for a company to do this kind of research. You can investigate software on your own and submit a finding through the relevant program."
+  },
+  {
+    "image": "slide-48.webp",
+    "text": "SHELLMATES\n  CLUB\n\n\nJOB MARKET\n3. Vulnerability Research & R&D\nZero-day and one-day vulnerability research\nBrowser, kernel, mobile, and hardware security\nResearch labs and specialized security companies\n\n4. Teaching & Training\nCybersecurity workshops and courses\nAdvanced reverse engineering and exploitation training\nCorporate and government security training\n                  /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "### Research and Development\n\nAnother path is working in a vulnerability research lab. Researchers investigate zero-day and one-day vulnerabilities in products such as Apple and Android software and other systems. Some research labs pay well for this work.\n\nThey may research Apple and Android software, browsers, operating systems, kernels, and other low-level software. Some labs I know about: [add the names you want to mention.]\n\n### Teaching and Courses\n\nThese skills are useful across cybersecurity. As you gain experience, you could run courses and workshops or teach more advanced topics, such as assembly language or vulnerability research. For example, you could teach assembly to the army or teach security teams how to investigate software bugs.\n\n### AI and Your Work\n\nIn the AI era, having a strong background and proof of your work can help you stand out. AI can automate some tasks, but documenting your research and showing what you understand can give employers a clearer picture of your abilities. Focus on understanding the topics, building skills, doing research, and documenting your progress—not only collecting certificates or learning tools."
+  },
+  {
+    "image": "slide-49.webp",
+    "text": "SHELLMATES\nCLUB\n\n\n\n\n             THANK YOU\n              FOR YOUR\n             ATTENTION!\n\n             /*WHERE THERE’S A SHELL, THERE’S A WAY*/",
+    "script": "Thank you for your attention!"
+  }
+]

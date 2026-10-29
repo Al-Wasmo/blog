@@ -4,6 +4,7 @@ import PostActions from "@/components/PostActions.astro"
 import ScrollToTop from "@/components/ScrollToTop.astro"
 import SeriesReader from "@/components/SeriesReader.astro"
 import TableOfContents from "@/components/TableOfContents.astro"
+import Illustrations from "@/components/illustrations/Illustrations.astro"
 import Layout from "@/layouts/Layout.astro"
 import { getPosts, getSubposts, pageTitle } from "@/lib/content"
 import { formatDate, isSubpost, subpostSlug, withBase } from "@/lib/utils"
@@ -57,6 +58,7 @@ if (isSubpost(post.id)) {
 ---
 
 <Layout crumbs={crumbs}>
+  <Illustrations />
   <MetaPost
     slot="head"
     post={post}
@@ -119,7 +121,9 @@ if (isSubpost(post.id)) {
           <p>{entry.data.description}</p>
         </header>
         {entry.data.image && (
-          <post-banner>
+          <post-banner
+            data-trim-left-edge={entry.id === "pwn-and-reverse-engineering-workshop" || undefined}
+          >
             <Image
               src={entry.data.image}
               alt={entry.data.title}
@@ -229,6 +233,10 @@ if (isSubpost(post.id)) {
   post-banner {
     display: block;
     margin-block-end: var(--space-m);
+
+    &[data-trim-left-edge] {
+      clip-path: inset(0 0 0 1px);
+    }
 
     :global(img) {
       inline-size: 100%;
