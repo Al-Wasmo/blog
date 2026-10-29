@@ -16,8 +16,9 @@ class WorkshopSlides extends HTMLElement {
     root.innerHTML = `<style>
       :host { --surface:var(--background,#111); --ink:var(--foreground,#eee); --line:var(--border,#333); --muted:var(--muted-foreground,#aaa); display:block; color:var(--ink); font-family:var(--font-sans,system-ui); }
       * { box-sizing:border-box; } [hidden] { display:none!important; }
-      .viewer { display:flex; width:100%; background:#101010; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+      .viewer { position:relative; display:flex; width:100%; background:#101010; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
       .presentation { display:flex; flex-direction:column; flex:1; min-width:0; }
+      .viewer.with-transcript .presentation { flex:0 0 calc(100% - clamp(320px,33%,470px)); }
       .screen { aspect-ratio:16/9; min-height:0; position:relative; }
       img { display:block; width:100%; height:100%; object-fit:contain; }
       nav { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:12px 16px; background:#191919; color:#eee; border-top:1px solid #303030; }
@@ -30,14 +31,14 @@ class WorkshopSlides extends HTMLElement {
       .download:hover { background:#303030; }
       .counter { font:13px var(--font-mono,monospace); min-width:74px; text-align:center; color:#ccc; }
       .progress { height:3px; background:#303030; } .progress span { display:block; height:100%; width:0; background:#ddd; transition:width .2s; }
-      aside { --notes-bg:#171b19; --notes-panel:#202722; --notes-border:#303c33; --notes-ink:#e1e8e2; --notes-muted:#a3b0a6; --notes-accent:#b4d68a; display:flex; flex-direction:column; flex:0 0 clamp(320px,33%,470px); max-height:650px; background:var(--notes-bg); color:var(--notes-ink); border-left:1px solid var(--notes-border); min-width:0; color-scheme:dark; font-family:"IBM Plex Sans",var(--font-sans,system-ui); }
-      .notes-header { display:flex; align-items:center; justify-content:space-between; padding:14px 22px; border-bottom:1px solid var(--notes-border); background:linear-gradient(135deg,var(--notes-panel),var(--notes-bg)); }
+      aside { --notes-bg:#171b19; --notes-panel:#202722; --notes-border:#303c33; --notes-ink:#e1e8e2; --notes-muted:#a3b0a6; --notes-accent:#b4d68a; position:absolute; inset:0 0 0 auto; display:flex; flex-direction:column; width:clamp(320px,33%,470px); height:100%; min-height:0; overflow:hidden; background:var(--notes-bg); color:var(--notes-ink); border-left:1px solid var(--notes-border); color-scheme:dark; font-family:"IBM Plex Sans",var(--font-sans,system-ui); }
+      .notes-header { display:flex; flex:0 0 auto; align-items:center; justify-content:space-between; padding:14px 22px; border-bottom:1px solid var(--notes-border); background:linear-gradient(135deg,var(--notes-panel),var(--notes-bg)); }
       .eyebrow { display:flex; align-items:center; gap:8px; margin:0 0 8px; color:var(--notes-accent); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.16em; }
       .eyebrow::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--notes-accent); }
       h3 { margin:0; font-size:20px; line-height:1.2; font-weight:500; letter-spacing:-.04em; }
       .close { color:var(--notes-muted); font-size:24px; padding:0 10px; border:1px solid var(--notes-border); }
       .close:hover { background:var(--notes-panel); color:var(--notes-ink); }
-      .notes-body { padding:26px; overflow:auto; flex:1; scrollbar-width:thin; scrollbar-color:var(--notes-border) transparent; }
+      .notes-body { min-height:0; padding:26px; overflow:auto; flex:1 1 0; scrollbar-width:thin; scrollbar-color:var(--notes-border) transparent; }
       .notes-kind { display:inline-block; padding:5px 9px; border:1px solid var(--notes-border); background:var(--notes-panel); border-radius:20px; font-size:10px; letter-spacing:.04em; color:var(--notes-muted); margin-bottom:24px; }
       .text { font-size:18px; font-weight:400; line-height:1.85; letter-spacing:.005em; overflow-wrap:anywhere; }
       .text p { margin:0 0 1.35em; }
@@ -56,9 +57,17 @@ class WorkshopSlides extends HTMLElement {
       :host(:fullscreen),:host([data-expanded]) { position:fixed; inset:0; z-index:2147483647; width:100%; height:100%; background:#111; margin:0; }
       :host(:is(:fullscreen,[data-expanded])) .viewer { height:100dvh; border:0; border-radius:0; }
       :host(:is(:fullscreen,[data-expanded])) .screen { flex:1; aspect-ratio:auto; }
-      :host(:is(:fullscreen,[data-expanded])) aside { max-height:100dvh; }
+      :host(:is(:fullscreen,[data-expanded])) aside { height:100%; }
       :host(:is(:fullscreen,[data-expanded])) nav { padding:14px 22px; }
-      @media(width < 700px) { .viewer { flex-direction:column; } aside { flex-basis:auto; max-height:40vh; border-left:0; border-top:1px solid var(--line); } :host(:is(:fullscreen,[data-expanded])) .presentation { min-height:55vh; } :host(:is(:fullscreen,[data-expanded])) aside { max-height:40vh; } nav { gap:4px; padding:8px; } button { padding:8px; } }
+      @media(width < 700px) {
+        .viewer { flex-direction:column; }
+        .viewer.with-transcript .presentation { width:100%; flex:1 1 auto; }
+        aside { position:relative; inset:auto; width:100%; height:min(40vh,360px); flex:0 0 auto; border-left:0; border-top:1px solid var(--line); }
+        :host(:is(:fullscreen,[data-expanded])) .presentation { min-height:0; }
+        :host(:is(:fullscreen,[data-expanded])) aside { height:35vh; flex-basis:35vh; }
+        nav { gap:4px; padding:8px; }
+        button { padding:8px; }
+      }
       @media(prefers-reduced-motion:reduce) { .progress span { transition:none; } }
     </style><div class="viewer"><div class="presentation"><div class="screen"><img alt="Workshop slide"></div><div class="progress" aria-hidden="true"><span></span></div><nav aria-label="Slide navigation"><div class="navigation"><button data-direction="-1" aria-label="Previous slide" title="Previous slide (←)">←</button><span class="counter" role="status" aria-live="polite"></span><button data-direction="1" aria-label="Next slide" title="Next slide (→)">→</button></div><div class="tools"><button data-action="transcript" aria-expanded="false" aria-controls="transcript">Transcript</button><button data-action="fullscreen">Fullscreen</button><a class="download" href="${base}../pwn-workshop-1.pdf" download="PWN Workshop 1.pdf">Download PDF</a></div></nav></div><aside id="transcript" hidden><div class="notes-header"><div><h3 class="slide-title">Slide 1</h3></div><button class="close" data-action="close-transcript" aria-label="Close transcript">×</button></div><div class="notes-body"><span class="notes-kind"></span><div class="text"></div></div></aside></div>`
     this.events?.abort()
@@ -83,6 +92,9 @@ class WorkshopSlides extends HTMLElement {
               ? false
               : !this.transcript
           root.querySelector<HTMLElement>("aside")!.hidden = !this.transcript
+          root
+            .querySelector<HTMLElement>(".viewer")!
+            .classList.toggle("with-transcript", this.transcript)
           root
             .querySelector("[data-action=transcript]")!
             .setAttribute("aria-expanded", String(this.transcript))
